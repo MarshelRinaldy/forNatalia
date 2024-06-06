@@ -100,3 +100,4 @@ Route::get('/dashboard_owner', [OwnerController::class, 'dashboard_owner'])->nam
 
 //MO DAN OWNER
 Route::get('/laporan_penjualan', [OwnerMoController::class, 'laporan_penjualan'])->name('laporan_penjualan');
+Route::get('/laporan_bahan_baku_digunakan', [OwnerMoController::class, 'laporan_bahan_baku_digunakan'])->name('laporan_bahan_baku_digunakan');

@@ -14,7 +14,6 @@ class BahanBaku extends Model
     protected $fillable = ['nama', 'stok', 'satuan', 'harga', 'totalPemakaian'];
 
 
-    
 //      public function resep()
 //     {
 //         return $this->hasMany(Resep::class);
