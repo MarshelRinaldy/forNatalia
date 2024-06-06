@@ -44,11 +44,11 @@ class LoginController extends Controller
             case 'customer':
                 return view('dashboard');
             case 'mo':
-                return redirect()->route('dataKaryawan');
+                return redirect()->route('dashboard_mo');
             case 'admin':
                 return redirect()->route('index_admin');
             case 'owner':
-                return redirect()->route('index_gaji_bonus_karyawan');
+                return redirect()->route('dashboard_owner');
             default:
                 return redirect()->route('login')->with('error', 'Peran pengguna tidak valid');
         }

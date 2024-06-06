@@ -1,18 +1,20 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MoController;
+use App\Http\Controllers\GajiController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JarakController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\ResepController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\KonfirmasiController;
-use App\Http\Controllers\ResepController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PemesananController;
-use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\GajiController;
-use App\Http\Controllers\JarakController;
-
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KonfirmasiController;
+use App\Http\Controllers\OwnerMoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +91,12 @@ Route::patch('/batalkan/{id}', [PemesananController::class, 'batalkan'])->name('
 Route::patch('/confirm_pesanan_diproses/{id}', [PemesananController::class, 'confirm_pesanan_diproses'])->name('confirm_pesanan_diproses');
 Route::patch('/confirm_pesanan_sudah_dipickup/{id}', [PemesananController::class, 'confirm_pesanan_sudah_dipickup'])->name('confirm_pesanan_sudah_dipickup');
 Route::patch('/barang_sudah_diterima/{id}', [CustomerController::class, 'barang_sudah_diterima'])->name('barang_sudah_diterima');
+
+
+//MO
+Route::get('/dashboard_mo', [MoController::class, 'dashboard_mo'])->name('dashboard_mo');
+Route::get('/dashboard_owner', [OwnerController::class, 'dashboard_owner'])->name('dashboard_owner');
+
+
+//MO DAN OWNER
+Route::get('/laporan_penjualan', [OwnerMoController::class, 'laporan_penjualan'])->name('laporan_penjualan');

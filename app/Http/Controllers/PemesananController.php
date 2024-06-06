@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Income;
+
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
-
-use Carbon\Carbon;
 
 class PemesananController extends Controller
 {
@@ -37,14 +38,23 @@ class PemesananController extends Controller
         return view('admin.pesananSiapDipickup', compact('pemesanans'));
     }
 
-    public function confirm_pesanan_sudah_dipickup($id){
-        $pemesanan = Pemesanan::findOrFail($id);
+    //buat agar nambah untuk pemasukan perusahaan
+   public function confirm_pesanan_sudah_dipickup($id)
+{
+    $pemesanan = Pemesanan::findOrFail($id);
 
-        $pemesanan->status_pemesanan = 'sudah dipickup';
-        $pemesanan->save();
+    $pemesanan->status_pemesanan = 'sudah dipickup';
+    $pemesanan->save();
 
-        return redirect()->route('tampilkan_pesanan_sudah_dipickup')->with('success', 'Pesanan sudah dipick up atau sudah tiba diantar');
-    }
+    Income::create([
+        'transaksi_id' => $id, 
+        'tanggal' => Carbon::now(),
+        'income' => $pemesanan->total_harga,
+        'pemesanan_id' => $pemesanan->id,
+    ]);
+
+    return redirect()->route('tampilkan_pesanan_sudah_dipickup')->with('success', 'Pesanan sudah dipick up atau sudah tiba diantar');
+}
 
     public function tampilkan_pesanan_telat_pembayaran(){
 
@@ -76,7 +86,6 @@ class PemesananController extends Controller
         $pemesanan->status_pemesanan = 'batal';
         $pemesanan->save();
 
-        return redirect()->route('tampilkan_pesanan_telat_pembayaran')->with('success', 'Pesanan Berhasil Dibatalkan');
+        return redirect()->route('index_admin')->with('success', 'Pesanan Berhasil Dibatalkan');
     }
-
 }

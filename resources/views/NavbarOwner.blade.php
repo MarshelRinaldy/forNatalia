@@ -185,33 +185,27 @@
         <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
-                    {{-- <i class="lni lni-grid-alt">Admin</i> --}}
+                    <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
                     <a href="#"></a>
                 </div>
             </div>
 
+
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#transaksi" aria-expanded="false" aria-controls="transaksi">
+                        data-bs-target="#laporan" aria-expanded="false" aria-controls="transaksi">
                         <i class="lni lni-agenda"></i>
-                        <span>Transaksi</span>
+                        <span>Laporan</span>
                     </a>
-                    <ul id="transaksi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="laporan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('tampilkan_pesanan_diproses') }}" class="sidebar-link">Pesanan
-                                Diproses</a>
+                            <a href="" class="sidebar-link">Laporan Pemasukan</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="{{ route('tampilkan_pesanan_sudah_dipickup') }}" class="sidebar-link">Pesanan Siap
-                                Dipickup</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('tampilkan_pesanan_telat_pembayaran') }}" class="sidebar-link">Pesanan
-                                Telat
-                                Pembayaran</a>
+                            <a href="" class="sidebar-link">Laporan BahanBaku</a>
                         </li>
                     </ul>
                 </li>

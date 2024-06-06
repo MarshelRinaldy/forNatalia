@@ -32,14 +32,26 @@
                             <td>{{ $pemesanan->no_pemesanan }}</td>
                             <td>{{ $pemesanan->status_pemesanan }}</td>
                             <td class="text-center">
-                                <form action="{{ route('confirm_pesanan_sudah_dipickup', $pemesanan->id) }}" method="POST">
-                                    @method('patch')
-                                    @csrf
-                                    <button type="submit" class="btn btn-success" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Sudah Diterima">
-                                        <i class="bi bi-check-circle"></i> Diterima Oleh Pembeli
-                                    </button>
-                                </form>
+                                <div class="d-flex justify-content-center">
+                                    <form action="{{ route('confirm_pesanan_sudah_dipickup', $pemesanan->id) }}"
+                                        method="POST" class="me-2">
+                                        @method('patch')
+                                        @csrf
+                                        <button type="submit" class="btn btn-success" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Sudah Diterima">
+                                            <i class="bi bi-check-circle"></i> Diterima Oleh Pembeli
+                                        </button>
+                                    </form>
+
+                                    <form action="{{ route('batalkan', $pemesanan->id) }}" method="POST">
+                                        @method('patch')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Batalkan">
+                                            <i class="bi bi-x-circle"></i> Batalkan
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

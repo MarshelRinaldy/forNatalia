@@ -35,6 +35,11 @@ class Pemesanan extends Model
         return $this->hasMany(DetailPemesanan::class, 'pemesanan_id', 'id');
     }
 
+    public function incomes()
+    {
+        return $this->hasMany(Income::class, 'pemesanan_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
