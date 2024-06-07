@@ -46,23 +46,30 @@ class OwnerMoController extends Controller
             ];
         }
 
-        return view('mo.laporanPemasukan', compact('report', 'startDate', 'endDate'));
+        $user = auth()->user();
+
+        if ($user->role === 'owner') {
+            return view('owner.laporanPemasukan', compact('report', 'startDate', 'endDate'));
+        }
+        else{
+            return view('mo.laporanPemasukan', compact('report', 'startDate', 'endDate'));
+        }
     }
 
 
    public function laporan_bahan_baku_digunakan(Request $request)
 {
-    // Set default start and end dates to cover all periods
-    $defaultStartDate = '2024-01-01'; // Atur ke tanggal awal yang Anda inginkan
+  
+    $defaultStartDate = '2024-01-01'; 
      $defaultEndDate = Carbon::now()->addDay()->format('Y-m-d');
 
-    // Get the start and end dates from the request, or use default values
+    
     $startDate = $request->input('startDate', $defaultStartDate);
     $endDate = $request->input('endDate', $defaultEndDate);
 
-    // Validate date inputs
+  
     if ($startDate && $endDate) {
-        // Fetch the report data within the date range
+      
         $report = BahanBaku::whereBetween('created_at', [$startDate, $endDate])
             ->select('nama', 'satuan', 'totalPemakaian')
             ->get()
@@ -70,10 +77,14 @@ class OwnerMoController extends Controller
     } else {
         
         $report = [];
-    }
+    }   
+         $user = auth()->user();
 
-    
-    return view('mo.laporanBahanBaku', compact('startDate', 'endDate', 'report'));
+        if ($user->role === 'owner') {
+            return view('owner.laporanBahanBaku', compact('startDate', 'endDate', 'report'));
+        }else{
+            return view('mo.laporanBahanBaku', compact('startDate', 'endDate', 'report'));
+        }
 }
 
 
