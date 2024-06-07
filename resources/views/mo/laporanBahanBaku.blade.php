@@ -18,8 +18,6 @@
 
     <div class="container mt-5 mb-5">
         <h2 class="text-center mb-4">Laporan Pemakaian Bahan Baku</h2>
-
-        {{-- Form untuk menampilkan laporan --}}
         <form id="reportForm" class="mb-4" method="GET" action="{{ route('laporan_bahan_baku_digunakan') }}">
             <div class="row">
                 <div class="col-md-4">
@@ -42,12 +40,12 @@
             </div>
         </form>
 
-        {{-- Tombol cetak laporan --}}
+
         <div class="mb-4 text-right">
             <button class="btn btn-secondary" onclick="printReport()">Cetak Laporan</button>
         </div>
 
-        {{-- Tabel laporan --}}
+
         <div id="reportContent" class="table-responsive mt-4">
             <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
@@ -58,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Loop untuk menampilkan data laporan --}}
+
                     @foreach ($report as $data)
                         <tr>
                             <td>{{ $data['nama'] }}</td>
@@ -72,12 +70,11 @@
     </div>
 
     <script>
-        // Fungsi untuk menampilkan laporan saat pertama kali dimuat
         window.onload = function() {
-            document.getElementById('showReportBtn').click(); // Klik tombol "Tampilkan Laporan" secara otomatis
+            document.getElementById('showReportBtn').click();
         };
 
-        // Fungsi untuk mengirimkan permintaan dan menampilkan laporan
+
         document.getElementById('showReportBtn').addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('reportContent').innerHTML =
@@ -100,7 +97,7 @@
                 .catch(error => console.error('Error:', error));
         });
 
-        // Fungsi untuk mencetak laporan
+
         function printReport() {
             const printContents = document.getElementById('reportContent').innerHTML;
             const originalContents = document.body.innerHTML;

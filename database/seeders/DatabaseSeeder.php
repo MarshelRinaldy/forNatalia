@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             [
                 'username' => 'admin',
                 'password' => Hash::make('admin123'),
-                'email' => 'admin1@gmail.com',
+                'email' => 'admin@gmail.com',
                 'noTelp' => '1234567890',
                 'alamat' => 'Admin Address',
                 'role' => 'admin',
@@ -34,9 +34,9 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'username' => 'customer1',
+                'username' => 'marlina',
                 'password' => Hash::make('customer123'),
-                'email' => 'customer1@gmail.com',
+                'email' => 'marlina@gmail.com',
                 'noTelp' => '0987654321',
                 'alamat' => 'Customer Address 1',
                 'role' => 'customer',
@@ -48,9 +48,9 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'username' => 'customer2',
+                'username' => 'doni',
                 'password' => Hash::make('customer123'),
-                'email' => 'customer2@gmail.com',
+                'email' => 'doni@gmail.com',
                 'noTelp' => '1122334455',
                 'alamat' => 'Customer Address 2',
                 'role' => 'customer',
@@ -62,9 +62,9 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
              [
-                'username' => 'owner1',
+                'username' => 'owner',
                 'password' => Hash::make('owner123'),
-                'email' => 'owner1@gmail.com',
+                'email' => 'owner@gmail.com',
                 'noTelp' => '0841241231',
                 'alamat' => 'Owner Address 1',
                 'role' => 'owner',
@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
             ],
 
             [
-                'username' => 'mo1',
+                'username' => 'mo',
                 'password' => Hash::make('mo123'),
                 'email' => 'mo1@gmail.com',
                 'noTelp' => '084124123213121',
@@ -161,6 +161,112 @@ class DatabaseSeeder extends Seeder
         'created_at' => now(),
         'updated_at' => now(),
     ]);
+
+     $pemesanan3 = DB::table('pemesanans')->insertGetId([
+        'user_id' => 2, 
+        'metode_pembayaran' => 'transfer',
+        'tanggal_pemesanan' => now()->subDays(5), 
+        'jumlah_pemesanan' => 115000, 
+        'bukti_pembayaran' => 'bukti3.jpg',
+        'status_pengantaran' => 'delivery',
+        'jenis_delivery' => 'delivery type 3',
+        'jarak_delivery' => 20, 
+        'alamat_pengantaran' => 'Alamat pengantaran 2',
+        'biaya_ongkir' => 15000,
+        'total_harga' => 130000, 
+        'status_pemesanan' => 'diproses',
+        'status_pembayaran' => 'belum bayar',
+        'image_bukti_pembayaran' => 'bukti2.jpg',
+        'no_pemesanan' => 'TRX00003',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    $pemesanan5= DB::table('pemesanans')->insertGetId([
+        'user_id' => 2, 
+        'metode_pembayaran' => 'transfer',
+        'tanggal_pemesanan' => now()->subDays(5), 
+        'jumlah_pemesanan' => 150000, 
+        'bukti_pembayaran' => 'bukti5.jpg',
+        'status_pengantaran' => 'delivery',
+        'jenis_delivery' => 'delivery type 5',
+        'jarak_delivery' => 20, 
+        'alamat_pengantaran' => 'Alamat pengantaran 5',
+        'biaya_ongkir' => 20000,
+        'total_harga' => 170000, 
+        'status_pemesanan' => 'pembayaran',
+        'status_pembayaran' => 'belum bayar',
+        'image_bukti_pembayaran' => 'bukti2.jpg',
+        'no_pemesanan' => 'TRX00005',
+        'created_at' => '2024-06-01 04:52:43',
+        'updated_at' => now(),
+    ]);
+
+    $pemesanan4 = DB::table('pemesanans')->insertGetId([
+        'user_id' => 3, 
+        'metode_pembayaran' => 'transfer',
+        'tanggal_pemesanan' => now()->subDays(5), 
+        'jumlah_pemesanan' => 100000, 
+        'bukti_pembayaran' => 'bukti2.jpg',
+        'status_pengantaran' => 'ambil sendiri',
+        'jenis_delivery' => 'delivery type 2',
+        'jarak_delivery' => 20, 
+        'alamat_pengantaran' => 'Alamat pengantaran 2',
+        'biaya_ongkir' => 0,
+        'total_harga' => 600000, 
+        'status_pemesanan' => 'diproses',
+        'status_pembayaran' => 'belum bayar',
+        'image_bukti_pembayaran' => 'bukti2.jpg',
+        'no_pemesanan' => 'TRX00004',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+
+    $totalHarga1 =  255000; 
+
+        DB::table('pemesanans')->where('id', $pemesanan1)->update([
+            // 'jumlah_pemesanan' => 3,
+            'total_harga' => $totalHarga1,
+            'updated_at' => now(),
+        ]);
+
+       
+        $totalHarga2 = 100000; 
+
+        DB::table('pemesanans')->where('id', $pemesanan2)->update([
+            // 'jumlah_pemesanan' => 3,
+            'total_harga' => $totalHarga2,
+            'updated_at' => now(),
+        ]);
+
+
+        $totalHarga2 = 130000; 
+
+        DB::table('pemesanans')->where('id', $pemesanan3)->update([
+            // 'jumlah_pemesanan' => 3,
+            'total_harga' => $totalHarga2,
+            'updated_at' => now(),
+        ]);
+
+        $totalHarga2 = 170000; 
+
+        DB::table('pemesanans')->where('id', $pemesanan5)->update([
+            // 'jumlah_pemesanan' => 3,
+            'total_harga' => $totalHarga2,
+            'updated_at' => now(),
+        ]);
+
+
+        $totalHarga2 = 600000; 
+
+        DB::table('pemesanans')->where('id', $pemesanan4)->update([
+            // 'jumlah_pemesanan' => 3,
+            'total_harga' => $totalHarga2,
+            'updated_at' => now(),
+        ]);
+
+
         
         $detailPemesanan1 = DB::table('detail_pemesanan')->insertGetId([
             'pemesanan_id' => $pemesanan1,
@@ -185,24 +291,41 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+         $detailPemesanan4 = DB::table('detail_pemesanan')->insertGetId([
+            'pemesanan_id' => $pemesanan3,
+            'produk_id' => $produk1,
+            'jumlah_produk' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+         $detailPemesanan5 = DB::table('detail_pemesanan')->insertGetId([
+            'pemesanan_id' => $pemesanan4,
+            'produk_id' => $produk1,
+            'jumlah_produk' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $detailPemesanan6 = DB::table('detail_pemesanan')->insertGetId([
+            'pemesanan_id' => $pemesanan5,
+            'produk_id' => $produk1,
+            'jumlah_produk' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        $detailPemesanan7 = DB::table('detail_pemesanan')->insertGetId([
+            'pemesanan_id' => $pemesanan5,
+            'produk_id' => $produk2,
+            'jumlah_produk' => 5,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
      
-        $jumlahPemesanan1 = 2 * 50000 + 1 * 75000;
-        $totalHarga1 = $jumlahPemesanan1 + 5000; 
-
-        DB::table('pemesanans')->where('id', $pemesanan1)->update([
-            'jumlah_pemesanan' => 3,
-            'total_harga' => $totalHarga1,
-            'updated_at' => now(),
-        ]);
-
-        $jumlahPemesanan2 = 3 * 75000; 
-        $totalHarga2 = $jumlahPemesanan2 + 7000; 
-
-        DB::table('pemesanans')->where('id', $pemesanan2)->update([
-            'jumlah_pemesanan' => 3,
-            'total_harga' => $totalHarga2,
-            'updated_at' => now(),
-        ]);
+       
+        
 
 
         //BAHAN BAKU

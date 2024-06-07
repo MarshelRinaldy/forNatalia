@@ -16,7 +16,7 @@
         }
     </style>
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <h2 class="text-center mb-4">Laporan Penjualan</h2>
 
         <form class="mb-4" method="GET" action="{{ route('laporan_penjualan') }}">

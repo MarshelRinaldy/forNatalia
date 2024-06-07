@@ -7,6 +7,13 @@
     <title>Alur Pemesanan Customer</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-image: url('/image/bg1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
         .tab-content>.tab-pane {
             display: none;
         }
@@ -18,12 +25,22 @@
         .card {
             margin-bottom: 1.5rem;
         }
+
+        .nav-tabs {
+            justify-content: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <ul class="nav nav-tabs mb-3">
+    <div class="container mt-5 mb-5">
+        <ul class="nav nav-tabs mb-3 justify-content-center">
             <li class="nav-item">
                 <a class="nav-link active" href="#belumBayar" data-toggle="tab">Pembayaran</a>
             </li>
@@ -93,8 +110,8 @@
                                 @if ($pemesanan->status_pengantaran == 'delivery')
                                     <p>Biaya Ongkir : Rp.{{ number_format($pemesanan->biaya_ongkir, 0, ',', '.') }}</p>
                                 @endif
-                                <p><strong>Total Harga :
-                                    </strong>Rp.{{ number_format($pemesanan->total_harga, 0, ',', '.') }}</p>
+                                <p><strong>Total Harga :</strong>
+                                    Rp.{{ number_format($pemesanan->total_harga, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     @endif
@@ -124,8 +141,8 @@
                                 @if ($pemesanan->status_pengantaran == 'delivery')
                                     <p>Biaya Ongkir : Rp.{{ number_format($pemesanan->biaya_ongkir, 0, ',', '.') }}</p>
                                 @endif
-                                <p><strong>Total Harga :
-                                    </strong>Rp.{{ number_format($pemesanan->total_harga, 0, ',', '.') }}</p>
+                                <p><strong>Total Harga :</strong>
+                                    Rp.{{ number_format($pemesanan->total_harga, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     @endif
@@ -192,8 +209,8 @@
                                 @if ($pemesanan->status_pengantaran == 'delivery')
                                     <p>Biaya Ongkir : Rp.{{ number_format($pemesanan->biaya_ongkir, 0, ',', '.') }}</p>
                                 @endif
-                                <p><strong>Total Harga :
-                                    </strong>Rp.{{ number_format($pemesanan->total_harga, 0, ',', '.') }}</p>
+                                <p><strong>Total Harga :</strong>
+                                    Rp.{{ number_format($pemesanan->total_harga, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     @endif
@@ -202,9 +219,9 @@
 
             <!-- Dibatalkan -->
             <div id="dibatalkan" class="tab-pane fade">
-                <h3 class="mb-4">Dibatalkan</h3>
+                <h3 class="mb-4">Batal</h3>
                 @foreach ($pemesanans as $pemesanan)
-                    @if ($pemesanan->status_pemesanan == 'Dibatalkan')
+                    @if ($pemesanan->status_pemesanan == 'batal')
                         <div class="card">
                             <div class="card-header bg-danger text-white">
                                 No. Pemesanan: {{ $pemesanan->no_pemesanan }}
@@ -216,7 +233,8 @@
                                 <ul>
                                     @foreach ($pemesanan->detailPemesanans as $detail)
                                         <li>{{ $detail->produk->nama }} ({{ $detail->jumlah_produk }})</li>
-                                        <li>{{ $detail->produk->deskripsi }}</li>
+
+                                        <p>{{ $detail->produk->deskripsi }}</p>
                                     @endforeach
                                 </ul>
                                 <hr>
