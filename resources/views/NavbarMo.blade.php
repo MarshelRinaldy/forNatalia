@@ -188,7 +188,7 @@
                     <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a href="#"></a>
+                    <a href="#">MO</a>
                 </div>
             </div>
 
