@@ -202,10 +202,11 @@
                     </a>
                     <ul id="laporan" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Laporan Pemasukan</a>
+                            <a href="{{ route('laporan_penjualan') }}" class="sidebar-link">Laporan Penjualan</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Laporan BahanBaku</a>
+                            <a href="{{ route('laporan_bahan_baku_digunakan') }}" class="sidebar-link">Laporan
+                                BahanBaku</a>
                         </li>
                     </ul>
                 </li>
